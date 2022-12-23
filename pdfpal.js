@@ -8,7 +8,7 @@ const { inputToPDF } = require('./custom-modules/1.input-to-pdf')
 const { textToPdf } = require("./custom-modules/2.textfile-to-pdf")
 const { merger } = require("./custom-modules/3.merger")
 const { splitter } = require("./custom-modules/4.splitter")
-// const pageRemover = require("./custom-modules/5.page-remover")
+const { singlePageRemover, multiPageRemover } = require("./custom-modules/5.page-remover")
 // const pdfToJPG = require("./custom-modules/6.pdf-to-jpg")
 // const pageCounter = require("./custom-modules/7.page-counter")
 // const zipper = require("./custom-modules/8.zipper")
@@ -20,7 +20,7 @@ const readlineSync = require('readline-sync');
 const fs = require('fs');
 const glob = require('glob');
 const path = require('path');
-const { file } = require('pdfkit');
+const { file, read } = require('pdfkit');
 
 console.clear()
 console.log(colors.rainbow(`
@@ -34,7 +34,7 @@ console.log(`
 2. Convert a Text file into a PDF file.
 3. Merge multiple PDFs.
 4. Split a PDF into separate PDFs.
-5. Remove a PDF page.
+5. Remove PDF page(s).
 6. Convert a PDF to JPG files.
 7. Count the number of PDF pages.
 8. Zip the pdf file.
@@ -119,9 +119,32 @@ switch (userChoice) {
         break;
     case '4':
         if (readlineSync.question("Attention! To keep things tidy, any file in output directory will be removed. if it's ok press y and then enter. ".red) === 'y') {
+            console.log("Place the PDF that you want to split in input directory.");
+            readlineSync.question("Press enter when you are ready.")
             startFresh()
             splitter(fileNamesList().join(""))
             console.log(`Your PDF has been splitted successfully!`.green);
+        }
+        break;
+    case '5':
+        if (readlineSync.question("Attention! To keep things tidy, any file in output directory will be removed. if it's ok press y and then enter. ".red) === 'y') {
+            console.log("\nDo you want to remove a single page or multiple pages?");
+            if (readlineSync.question("For single page press s and and for multiple pages press m then press enter. ") === "s") {
+                // remove single page
+                readlineSync.question("\nPlace your PDF file in input folder.\nWhen you are ready press enter.") 
+                const pageToRemove = readlineSync.question("\nWhich page do you want to remove? \nexample input: 3\n")
+                startFresh()
+                singlePageRemover(fileNamesList().join(""), pageToRemove)
+                console.log(`\nPage ${pageToRemove} was remove successfully.`.green);
+            }
+            else {
+                // remove multiple page
+                readlineSync.question("\nPlace your PDF file in input folder.\nWhen you are ready press enter.")
+                const pagesToRemove = readlineSync.question("\nWhich pages do you want to remove? \nexample input: 1,2,3\n")
+                startFresh()
+                multiPageRemover(fileNamesList().join(""), pagesToRemove)
+                console.log(`\nPages ${pagesToRemove} were removed successfully.`.green);
+            }
         }
         break;
     default:
