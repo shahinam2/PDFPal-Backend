@@ -26,6 +26,7 @@
     "nodemailer": "^6.8.0",
     "pdf-lib": "^1.17.1",
     "pdf-page-counter": "^1.0.3",
+    "pdf-parse": "^1.1.1",
     "pdf-poppler": "^0.2.1",
     "pdf-watermark": "^1.0.3",
     "pdf2pic": "^2.1.4",

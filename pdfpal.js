@@ -9,8 +9,8 @@ const { textToPdf } = require("./custom-modules/2.textfile-to-pdf")
 const { merger } = require("./custom-modules/3.merger")
 const { splitter } = require("./custom-modules/4.splitter")
 const { singlePageRemover, multiPageRemover } = require("./custom-modules/5.page-remover")
-// const pdfToJPG = require("./custom-modules/6.pdf-to-jpg")
-// const pageCounter = require("./custom-modules/7.page-counter")
+const { pdfToJPG } = require("./custom-modules/6.pdf-to-jpg")
+const { pageCounter } = require("./custom-modules/7.page-counter")
 // const zipper = require("./custom-modules/8.zipper")
 // const mailer = require("./custom-modules/9.mailer")
 
@@ -30,7 +30,7 @@ console.log(colors.rainbow(`
 `));
 
 console.log(`
-1. Convert multiline input & convert it to a PDF file.
+1. Convert multiline input to a PDF file.
 2. Convert a Text file into a PDF file.
 3. Merge multiple PDFs.
 4. Split a PDF into separate PDFs.
@@ -131,7 +131,7 @@ switch (userChoice) {
             console.log("\nDo you want to remove a single page or multiple pages?");
             if (readlineSync.question("For single page press s and and for multiple pages press m then press enter. ") === "s") {
                 // remove single page
-                readlineSync.question("\nPlace your PDF file in input folder.\nWhen you are ready press enter.") 
+                readlineSync.question("\nPlace your PDF file in input folder.\nWhen you are ready press enter.")
                 const pageToRemove = readlineSync.question("\nWhich page do you want to remove? \nexample input: 3\n")
                 startFresh()
                 singlePageRemover(fileNamesList().join(""), pageToRemove)
@@ -147,21 +147,37 @@ switch (userChoice) {
             }
         }
         break;
+    case '6':
+        if (readlineSync.question("Attention! To keep things tidy, any file in output directory will be removed. if it's ok press y and then enter. ".red) === 'y') {
+            if (readlineSync.question("\nPDFPal relys on poppler-utils in order to convert PDF to JPG.\nIf poppler-utils is not installed on your system, it will be installed in the next step.\nIf its ok, press y and enter. ") === 'y') {
+                console.log("\nPlace the PDF that you want to convert to jpg files in input directory.");
+                const pageRange = readlineSync.question("Which range of pages do you want to convert?\nExample input: 1-10\n")
+                startFresh()
+                pdfToJPG(fileNamesList().join(""), pageRange)
+                console.log(`\nYour PDF has been converted successfully!`.green);
+            }
+        }
+        break;
+    case '7':
+        readlineSync.question("Place the PDF file that you want to know its number of pages in input directory and then press enter.")
+        pageCounter(fileNamesList().join(""));
+
+        break;
     default:
         console.log('Invalid input. your input should be number between 1-9.');
 }
 
 
-// custom modules:
-// inputToPDF();
-// textToPdf();
-// merger();
-// splitter()
-// pageRemover()
-// pdfToJPG()
-// pageCounter()
-// zipper()
-// mailer()
+                // custom modules:
+                // inputToPDF();
+                // textToPdf();
+                // merger();
+                // splitter()
+                // pageRemover()
+                // pdfToJPG()
+                // pageCounter()
+                // zipper()
+                // mailer()
 
 
 

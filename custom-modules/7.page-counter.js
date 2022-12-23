@@ -1,20 +1,21 @@
-const pdf = require('pdf-page-counter');
 const fs = require('fs');
+const pdf = require('pdf-parse');
+const path = require("path");
+const colors = require("colors");
 
-// readFileSync returns the contents of the path.
-// process.argv[2] returns the index 2 of options:
-// (index 0)  (index 1)         (index 2)    
-// node       count-pages.js    test.pdf
-let pdfFile = fs.readFileSync(`${process.argv[2]}`);
-
-async function pageCounter() {
-    pdf(pdfFile).then((data) => {
-        // number of pages
-        console.log(`The PDF has ${data.numpages} page(s).`);
+async function pageCounter(pdfFile) {
+    // Read the PDF file into a Buffer
+    const pdfBuffer = fs.readFileSync(path.resolve(__dirname, pdfFile));
+    
+    // Parse the PDF buffer
+    pdf(pdfBuffer).then(function (data) {
+        // Get the number of pages in the PDF file
+        const numPages = data.numpages;
+    
+        console.log(`\nTotal number of pages: ${numPages}`.green);
     });
 }
 
-// export default pageCounter;
 module.exports = {
     pageCounter,
 }
