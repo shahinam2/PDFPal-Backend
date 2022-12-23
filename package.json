@@ -12,6 +12,7 @@
   "author": "Shahin Hemmati",
   "license": "MIT",
   "dependencies": {
+    "@pdftron/pdfnet-node-samples": "^9.4.2",
     "adm-zip": "^0.5.10",
     "canvas": "^2.10.2",
     "colors": "^1.4.0",
@@ -28,9 +29,11 @@
     "pdf-poppler": "^0.2.1",
     "pdf-watermark": "^1.0.3",
     "pdf2pic": "^2.1.4",
+    "pdfjs-dist": "^3.1.81",
     "pdfkit": "^0.13.0",
     "puppeteer": "^19.4.1",
     "readline-sync": "^1.4.10",
+    "scissors": "^0.3.0",
     "zlib": "^1.0.5"
   }
 }

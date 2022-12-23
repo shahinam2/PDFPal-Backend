@@ -11,7 +11,6 @@ async function merger(inputFiles) {
     for (const inputFile of inputFiles) {
         // Load the PDF document
         // const pdf = await PDFDocument.load(fs.readFileSync(inputFile));
-        
         let resolvedInputFile = fs.readFileSync(path.resolve(__dirname, inputFile))
         
         const pdf = await PDFDocument.load(resolvedInputFile);

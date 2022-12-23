@@ -20,8 +20,7 @@ const readlineSync = require('readline-sync');
 const fs = require('fs');
 const glob = require('glob');
 const path = require('path');
-
-
+const { file } = require('pdfkit');
 
 console.clear()
 console.log(colors.rainbow(`
@@ -31,22 +30,21 @@ console.log(colors.rainbow(`
 `));
 
 console.log(`
-PDFPal is capable of:
-    1. Convert multiline input & convert it to a PDF file.
-    2. Convert a Text file into a PDF file.
-    3. Merge multiple PDFs.
-    4. Split a PDF into separate PDFs.
-    5. Remove a PDF page.
-    6. Convert a PDF to JPG files.
-    7. Count the number of PDF pages.
-    8. Zip the pdf file.
-    9. Email the PDF file. \n`);
+1. Convert multiline input & convert it to a PDF file.
+2. Convert a Text file into a PDF file.
+3. Merge multiple PDFs.
+4. Split a PDF into separate PDFs.
+5. Remove a PDF page.
+6. Convert a PDF to JPG files.
+7. Count the number of PDF pages.
+8. Zip the pdf file.
+9. Email the PDF file. \n`);
 
 // Accept input number from user
 let userChoice = readlineSync.question('Enter the number of tool to get its instructions: ');
 console.log("\n");
 
-function startFresh() {
+async function startFresh() {
     const outputFolder = 'output';
     // Find all files in the output folder
     glob(`${outputFolder}/*`, (err, files) => {
@@ -63,6 +61,12 @@ function startFresh() {
             });
         });
     });
+}
+
+function fileNamesList() {
+    const fileNames = fs.readdirSync("./input")
+        .map((file) => `../input/${path.parse(file).name}.pdf`);
+    return fileNames;
 }
 
 switch (userChoice) {
@@ -103,17 +107,22 @@ switch (userChoice) {
             readlineSync.question("Press enter when you are ready.")
             startFresh();
 
-            // get the names of the pdf files from input directory
-            const fileNames = fs.readdirSync("./input")
-                .map((file) => `../input/${path.parse(file).name}.pdf`);
-
-            merger(fileNames.slice(" ")).catch((err) => console.log(err));
+            merger(
+                // get the names of the pdf files from input directory
+                fileNamesList()
+            )
+                .catch((err) => console.log(err)
+                );
 
             console.log(`Your PDFs have merged successfully.`.green);
         }
         break;
     case '4':
-
+        if (readlineSync.question("Attention! To keep things tidy, any file in output directory will be removed. if it's ok press y and then enter. ".red) === 'y') {
+            startFresh()
+            splitter(fileNamesList().join(""))
+            console.log(`Your PDF has been splitted successfully!`.green);
+        }
         break;
     default:
         console.log('Invalid input. your input should be number between 1-9.');
