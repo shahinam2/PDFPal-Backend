@@ -4,21 +4,23 @@
 // Import the AdmZip module
 // import AdmZip from "adm-zip";
 const AdmZip = require("adm-zip")
+const path = require("path");
+const colors = require("colors");
 
 // Declare an async function that creates a zip archive
-async function createZipArchive() {
+async function zipper() {
     // Try to create the zip archive
     try {
         // Create a new AdmZip instance
         const zip = new AdmZip();
         // Set the output file name for the zip archive
-        const outputFile = "output.zip";
+        const outputFile = path.resolve(__dirname, "../output/output.zip");
         // Add the contents of the "output" folder to the zip archive
-        zip.addLocalFolder("./output");
+        zip.addLocalFolder(path.resolve(__dirname, "../output"));
         // Write the zip archive to the output file
         zip.writeZip(outputFile);
         // Log a message to the console indicating that the zip archive was created successfully
-        console.log(`Created ${outputFile} successfully`);
+        console.log(`\nOutput.zip was successfully created.`.green);
         // If an error occurs, catch it and log a message to the console
     } catch (e) {
         console.log(`Something went wrong. ${e}`);
@@ -26,8 +28,8 @@ async function createZipArchive() {
 }
 
 // Call the createZipArchive function
-createZipArchive();
+// createZipArchive();
 
 module.exports = {
-    createZipArchive,
+    zipper,
 }

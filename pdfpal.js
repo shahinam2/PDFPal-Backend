@@ -1,8 +1,5 @@
 #!/usr/bin/env node
 
-// import * as dotenv from 'dotenv'
-// dotenv.config({ path: "./config/.env" })
-
 // Custom Modules Imports:
 const { inputToPDF } = require('./custom-modules/1.input-to-pdf')
 const { textToPdf } = require("./custom-modules/2.textfile-to-pdf")
@@ -11,8 +8,8 @@ const { splitter } = require("./custom-modules/4.splitter")
 const { singlePageRemover, multiPageRemover } = require("./custom-modules/5.page-remover")
 const { pdfToJPG } = require("./custom-modules/6.pdf-to-jpg")
 const { pageCounter } = require("./custom-modules/7.page-counter")
-// const zipper = require("./custom-modules/8.zipper")
-// const mailer = require("./custom-modules/9.mailer")
+const { zipper } = require("./custom-modules/8.zipper")
+const { mailer } = require("./custom-modules/9.mailer")
 
 // imports for pdfpal.js:
 const colors = require("colors");
@@ -37,7 +34,7 @@ console.log(`
 5. Remove PDF page(s).
 6. Convert a PDF to JPG files.
 7. Count the number of PDF pages.
-8. Zip the pdf file.
+8. Zip the files in output directory.
 9. Email the PDF file. \n`);
 
 // Accept input number from user
@@ -163,33 +160,20 @@ switch (userChoice) {
         pageCounter(fileNamesList().join(""));
 
         break;
+    case '8':
+        if (readlineSync.question("Any file in output directory will be zipped as output.zip. if its ok press y and then press enter. ") === "y") {
+            zipper();
+        }
+        break;
+    case '9':
+        console.log("PDFPal relies on google mail server(gmail) to send emails.\nIn order to use this service you should create an 'App password' and put it inside the following path: \n./config/.env\nWith the following format:\npassword=your-password-here\n\nIn order to get the 'App password' you can refer to the following video:\nhttps://www.youtube.com/watch?v=uVDq4VOBMNM\n");
+        const fileToMail = readlineSync.question("What is the name of the file in output directory that you want to mail? (e.g output.zip) ")
+        const senderEmailAdress = readlineSync.question("What is your email address: ")
+        const receiverEmailAddress = readlineSync.question("What is the email of the receiver: ")
+        const emailSubject = readlineSync.question("What is the subject of the email: ")
+        const emailContent = readlineSync.question("What is the content of your email: ")
+        mailer(fileToMail, senderEmailAdress, receiverEmailAddress, emailSubject, emailContent)
+        break;
     default:
         console.log('Invalid input. your input should be number between 1-9.');
 }
-
-
-                // custom modules:
-                // inputToPDF();
-                // textToPdf();
-                // merger();
-                // splitter()
-                // pageRemover()
-                // pdfToJPG()
-                // pageCounter()
-                // zipper()
-                // mailer()
-
-
-
-// TODO:
-// create a user menu which looks like this:
-// 1. User Text to PDF -- done
-// 2. Text file to PDF -- done
-// 5. Merge PDFs -- done
-// 6. Split a PDF into multiple PDFs -- Done
-// 4. Delete a PDF page -- done
-// 7. Convert PDF into multiple JPG files -- Done
-// 3. Count the number of pages -- done 
-// //8. Compress PDF -- it works but its destructive! -- cancelled
-// 9. Zip PDF -- Done
-// 10. Email the output as a zip file -- Done

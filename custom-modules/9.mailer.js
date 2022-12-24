@@ -17,6 +17,7 @@ const path = require('path')
 dotenv.config({ path: path.resolve(__dirname, "../config/.env") })
 const fs = require("fs");
 const { createTransport } = require("nodemailer");
+const colors = require("colors");
 
 // const config = JSON.parse(fs.readFileSync('../config/config.json'));
 // export const config = JSON.parse(readFileSync('../config/config.json'));
@@ -25,32 +26,34 @@ const { createTransport } = require("nodemailer");
 // const password = config.password;
 // console.log(typeof password);
 // console.log(password);
-async function mailer() {
+async function mailer(fileToMail, senderEmailAdress, receiverEmailAddress, emailSubject, emailContent) {
     const password = process.env.password;
     
     const transporter = createTransport({
         service: 'gmail',
         auth: {
-            user: 'senerso2019@gmail.com',
+            user: senderEmailAdress,
             pass: password
         }
     });
     
     const mailOptions = {
-        from: 'senerso2019@gmail.com',
-        to: 'shahin.ccie1989@gmail.com',
-        subject: 'Your PDF has arrived!',
-        text: 'Your zipped PDF is attached below.',
+        from: senderEmailAdress,
+        to: receiverEmailAddress,
+        subject: emailSubject,
+        text: emailContent,
         attachments: [{
-            path: path.resolve(__dirname, "./output/output.zip")
+            path: path.resolve(__dirname, `../output/${fileToMail}`)
         }]
     };
+
+    console.log("\nYour email is being sent!".yellow);
     
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
             console.log(error);
         } else {
-            console.log('Email was sent successfully!');
+            console.log('\nYour email was sent successfully!'.green);
             // console.log('Email sent successfully!' + info.response);
         }
     });
