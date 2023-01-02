@@ -1,4 +1,4 @@
-# Day34 - Final project day 2
+# PDFPal
 
 <p align="center">
     <img src="readme-content/Untitled.png" alt="PDFPal logo">
