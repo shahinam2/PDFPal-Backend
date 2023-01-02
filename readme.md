@@ -1,6 +1,8 @@
 # Day34 - Final project day 2
 
+<p align="center">
 ![Untitled](readme-content/Untitled.png)
+</p>
 
 ### TL;DR
 
@@ -27,6 +29,7 @@ and then run `./pdfpal` and choose the number of your desired tool and continue 
 ---
 
 ## Table of Contents:
+
 
 ## ℹ What is PDFPal?
 
