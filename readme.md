@@ -89,11 +89,11 @@ Start using PDFPal:
 
 - readline → used to get the user inputs
 - fs → used to interact with the file system
-- colors → used to make texts colorful, including the PDFPal welcome message.
-- pdfkit → used to generate PDF files.
+- colors → used to make texts colorful, including the PDFPal welcome message
+- pdfkit → used to generate PDF files
 - puppeteer → used to generate pdf file based on a text file. but this library can do a lot more!
-- pdf-lib → used to manipulate pdf files in this project. which is one of most popular pdf manipulator among all npm packages.
-- path → used to resolve user input relative paths.
+- pdf-lib → used to manipulate pdf files in this project. which is one of most popular pdf manipulator among all npm packages
+- path → used to resolve user input relative paths
 - child_process → used to run linux command line from within node.js
 - pdf-parse → used to count the number of pages in a pdf file
 - adm-zip → used to zip the contents of the output folder
