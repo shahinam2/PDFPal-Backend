@@ -28,9 +28,6 @@ and then run `./pdfpal` and choose the number of your desired tool and continue 
 
 ---
 
-## Table of Contents:
-
-
 ## ℹ What is PDFPal?
 
 PDFPal like PayPal is a user-friendly PDF manipulation tool. 
