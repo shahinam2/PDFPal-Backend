@@ -163,9 +163,9 @@ Start using PDFPal:
 
 ### 🎯 PDFPal Project's Aim/Status:
 
-At the time of writting this readme I’m at the end of 3rd module of DCI’s one year web development bootcamp which was all about javascript and node.js and everything in this module was CLI based. In the upcoming module we are going to learn about react. which is module 4. which module 4 is over I’m going to create a GUI for PDFPal.
+At the time of writting this readme I’m at the end of 3rd module of DCI’s one year web development bootcamp which was all about javascript and node.js and everything in this module was CLI based. In the upcoming module we are going to learn about react. which is module 4. when module 4 is over I’m going to create a GUI for PDFPal.
 
-After module 5 I’m going to add authentication, database, self-host and dockerize PDFPal.
+Then, when module 5, which is all about backend, I’m going to add authentication, database(to hold users data), dockerize, self-host PDFPal in AWS.
 
 ---
 
