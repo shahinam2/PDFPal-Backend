@@ -85,9 +85,7 @@ Start using PDFPal:
 
 ---
 
-### ⚙ Technologies used in this project:
-
-Used libraries are as follows:
+### ⚙ Libraries used in this project:
 
 - readline → used to get the user inputs
 - fs → used to interact with the file system
