@@ -3,19 +3,20 @@ const PDFLib = require('pdf-lib');
 const path = require("path");
 const { PDFDocument } = require("pdf-lib")
 
+// single page remover
 async function singlePageRemover(pdfFilePath, pageNumber) {
-    // pageNumbers = pageNumbers.split(",")
-    // console.log(pageNumbers);
-    
     // convert user page number to index numbers
     pageNumber = pageNumber - 1;
   
     // Read the PDF file
     const pdfBytes = fs.readFileSync(path.resolve(__dirname, pdfFilePath));
+
     // Load the PDF document
     const pdfDoc = await PDFLib.PDFDocument.load(pdfBytes);
+
     // Delete the specified pages
     pdfDoc.removePage(pageNumber);
+
     // Serialize the PDF document to a new Buffer
     const updatedPdfBytes = await pdfDoc.save();
 
@@ -23,6 +24,7 @@ async function singlePageRemover(pdfFilePath, pageNumber) {
     // return updatedPdfBytes;
 }
 
+// remove pages based on user input
 async function multiPageRemover(pdfFilePath, pageNumbers) {
     // split the array of strings by "," and convert each string to number.
     pageNumbers = (pageNumbers.split(",")).map(Number);
@@ -66,42 +68,6 @@ async function multiPageRemover(pdfFilePath, pageNumbers) {
     // Write the PDF buffer to a file
     await fs.promises.writeFile(outputPath, bytes);
 }
-
-// async function pageRemover(pdfFilePath, pageNumbers) {
-//     pageNumbers = pageNumbers.split(",")
-//     console.log(pageNumbers);
-
-//     // convert user page number to index numbers
-//     pageNumbers.forEach((num, index) => {
-//         pageNumbers[index] = num - 1;
-//     })
-
-//     console.log(pageNumbers);
-//     // Read the PDF file
-//     const pdfBytes = fs.readFileSync(path.resolve(__dirname, pdfFilePath));
-//     // Load the PDF document
-//     const pdfDoc = await PDFLib.PDFDocument.load(pdfBytes);
-//     // Delete the specified pages
-//     pageNumbers.map((pageNumber) => pdfDoc.removePage(pageNumber));
-//     // Serialize the PDF document to a new Buffer
-//     const updatedPdfBytes = await pdfDoc.save();
-
-//     fs.writeFileSync(path.resolve(__dirname, '../output/output.pdf'), updatedPdfBytes);
-//     // return updatedPdfBytes;
-
-// }
-
-// Example usage
-// const pdfFilePath = process.argv[2]; // Get the file path from the command line arguments
-// const pageNumbers = process.argv.slice(3).map(Number); // Get the page numbers from the command line arguments
-// pageRemover(pdfFilePath, pageNumbers)
-//     .then((updatedPdfBytes) => {
-//         // Save the updated PDF to a file
-//         fs.writeFileSync('output.pdf', updatedPdfBytes);
-//     })
-//     .catch((error) => {
-//         console.error(error);
-//     });
 
 // export default pageRemover;
 module.exports = {

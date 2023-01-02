@@ -19,10 +19,7 @@ async function textToPdf(textFilePath) {
     return pdf;
 }
 
-// Example usage
-
-
-// Usage:
+// To use this module in standalone mode:
 // node textfile-to-pdf.js input.txt
 
 // export default textToPdf;

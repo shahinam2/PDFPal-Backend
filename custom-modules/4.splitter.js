@@ -1,8 +1,5 @@
 // source:
 // https://www.labnol.org/split-pdf-file-220406
-// import fs from 'fs';
-// import path from 'path';
-// import { PDFDocument } from 'pdf-lib';
 const fs = require("fs")
 const path = require("path");
 const { PDFDocument } = require("pdf-lib")
@@ -42,11 +39,6 @@ const splitter = async (pdfFilePath) => {
         await fs.promises.writeFile(outputPath, bytes);
     }
 };
-
-// Split the PDF file specified as the first command line argument
-// Save the splitted pages to the 'splitted-pdf' folder
-// splitter(process.argv[2], 'splitted-pdf');
-// splitter("../input/1.sample.pdf");
 
 // export default splitter;
 module.exports = {

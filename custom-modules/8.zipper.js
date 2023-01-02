@@ -2,7 +2,6 @@
 // https://www.digitalocean.com/community/tutorials/how-to-work-with-zip-files-in-node-js#step-2-creating-a-zip-archive
 
 // Import the AdmZip module
-// import AdmZip from "adm-zip";
 const AdmZip = require("adm-zip")
 const path = require("path");
 const colors = require("colors");
@@ -26,9 +25,6 @@ async function zipper() {
         console.log(`Something went wrong. ${e}`);
     }
 }
-
-// Call the createZipArchive function
-// createZipArchive();
 
 module.exports = {
     zipper,

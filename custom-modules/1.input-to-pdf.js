@@ -1,9 +1,7 @@
 const readline = require("readline")
 const fs = require("fs")
 const PDFDocument = require("pdfkit")
-// import PDFDocument from 'pdfkit' 
-// import readline from 'readline';
-// import fs from 'fs';
+const colors = require("colors");
 
 async function inputToPDF() {
     const rl = readline.createInterface({
@@ -29,7 +27,7 @@ async function inputToPDF() {
         doc.text(text);
         doc.end();
 
-        console.log('PDF file created: output.pdf');
+        console.log('PDF file created: output.pdf'.green);
     });
 
     console.log(`Enter your text below. 

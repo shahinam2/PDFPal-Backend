@@ -12,29 +12,19 @@
   "author": "Shahin Hemmati",
   "license": "MIT",
   "dependencies": {
-    "@pdftron/pdfnet-node-samples": "^9.4.2",
     "adm-zip": "^0.5.10",
-    "canvas": "^2.10.2",
     "colors": "^1.4.0",
     "dotenv": "^16.0.3",
-    "figlet": "^1.5.2",
     "franc": "^6.1.0",
     "image-watermark": "^0.0.7",
-    "inquirer": "^9.1.4",
-    "jpeg-js": "^0.4.4",
     "langs": "^2.0.0",
     "nodemailer": "^6.8.0",
     "pdf-lib": "^1.17.1",
-    "pdf-page-counter": "^1.0.3",
     "pdf-parse": "^1.1.1",
     "pdf-poppler": "^0.2.1",
     "pdf-watermark": "^1.0.3",
-    "pdf2pic": "^2.1.4",
-    "pdfjs-dist": "^3.1.81",
     "pdfkit": "^0.13.0",
     "puppeteer": "^19.4.1",
-    "readline-sync": "^1.4.10",
-    "scissors": "^0.3.0",
-    "zlib": "^1.0.5"
+    "readline-sync": "^1.4.10"
   }
 }

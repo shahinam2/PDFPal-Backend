@@ -9,9 +9,6 @@
 // https://www.youtube.com/watch?v=uVDq4VOBMNM
 // import * as dotenv from 'dotenv'
 
-// dotenv.config({ path: "../config/.env" })
-// import { readFileSync } from "fs"
-// import { createTransport } from 'nodemailer';
 const dotenv = require("dotenv");
 const path = require('path')
 dotenv.config({ path: path.resolve(__dirname, "../config/.env") })
@@ -19,13 +16,6 @@ const fs = require("fs");
 const { createTransport } = require("nodemailer");
 const colors = require("colors");
 
-// const config = JSON.parse(fs.readFileSync('../config/config.json'));
-// export const config = JSON.parse(readFileSync('../config/config.json'));
-// const config = process.env.password;
-
-// const password = config.password;
-// console.log(typeof password);
-// console.log(password);
 async function mailer(fileToMail, senderEmailAdress, receiverEmailAddress, emailSubject, emailContent) {
     const password = process.env.password;
     
@@ -54,7 +44,6 @@ async function mailer(fileToMail, senderEmailAdress, receiverEmailAddress, email
             console.log(error);
         } else {
             console.log('\nYour email was sent successfully!'.green);
-            // console.log('Email sent successfully!' + info.response);
         }
     });
 }
