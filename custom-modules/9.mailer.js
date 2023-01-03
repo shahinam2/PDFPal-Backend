@@ -12,7 +12,6 @@
 const dotenv = require("dotenv");
 const path = require('path')
 dotenv.config({ path: path.resolve(__dirname, "../config/.env") })
-const fs = require("fs");
 const { createTransport } = require("nodemailer");
 const colors = require("colors");
 
