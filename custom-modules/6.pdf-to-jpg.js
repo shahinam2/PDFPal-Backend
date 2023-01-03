@@ -23,7 +23,7 @@ async function pdfToJPG(pdfFile, pageRange) {
 
     // example of converting from page 2 to 4
     // pdftoppm input.pdf output -jpeg -f 2 -l 4
-    const pdftoppm = spawn('pdftoppm', [resolvedPDFFile, resolvedOutput, '-jpeg', "-f", rangeStart, '-l', rangeEnd]);
+    spawn('pdftoppm', [resolvedPDFFile, resolvedOutput, '-jpeg', "-f", rangeStart, '-l', rangeEnd]);
 }
 
 // export default pdfToJPG;
