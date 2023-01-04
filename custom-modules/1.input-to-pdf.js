@@ -13,8 +13,8 @@ async function inputToPDF() {
 
     // Create a new PDF document
     const doc = new PDFDocument();
-    // Pipe the document to a file stream for saving
-    doc.pipe(fs.createWriteStream('./output/output.pdf'));
+    // write pdf to ./output/output.pdf
+    doc.pipe(fs.createWriteStream('./output/output.pdf')); 
 
     // Initialize an empty string for storing inputted text
     let text = '';

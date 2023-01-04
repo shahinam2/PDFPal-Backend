@@ -17,7 +17,6 @@ const readlineSync = require('readline-sync');
 const fs = require('fs');
 const glob = require('glob');
 const path = require('path');
-const { file, read } = require('pdfkit');
 
 console.clear()
 console.log(colors.rainbow(`
