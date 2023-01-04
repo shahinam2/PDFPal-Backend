@@ -124,12 +124,12 @@ Start using PDFPal:
     ![4-splitter.gif](readme-content/4-splitter.gif)
     
 
-1. 1.The following is an example of removing a page from a pdf file:
+1. The following is an example of removing a page from a pdf file:
     
     ![5-1-single-page-remover.gif](readme-content/5-1-single-page-remover.gif)
     
 
-1. 2.The following is an example of removing a range of pages from a pdf file:
+1. The following is an example of removing a range of pages from a pdf file:
     
     ![5-2-multiple-page-remover.gif](readme-content/5-2-multiple-page-remover.gif)
     
