@@ -146,7 +146,7 @@ switch (userChoice) {
         break;
     case '6':
         if (readlineSync.question("Attention! To keep things tidy, any file in output directory will be removed. if it's ok press y and then enter. ".red) === 'y') {
-            if (readlineSync.question("\nPDFPal relys on poppler-utils in order to convert PDF to JPG.\nIf poppler-utils is not installed on your system, it will be installed in the next step.\nIf its ok, press y and enter. ") === 'y') {
+            if (readlineSync.question("\nPDFPal relies on poppler-utils in order to convert PDF to JPG.\nIf poppler-utils is not installed on your system, it will be installed in the next step.\nIf its ok, press y and enter. ") === 'y') {
                 console.log("\nPlace the PDF that you want to convert to jpg files in input directory.");
                 const pageRange = readlineSync.question("Which range of pages do you want to convert?\nExample input: 1-10\n")
                 startFresh()
