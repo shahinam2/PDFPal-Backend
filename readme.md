@@ -22,7 +22,7 @@ Then clone the repo.
 
 make sure that pdfpal.js has execution permissions with `chmod +x ./pdfpal` 
 
-Install the necessary packages with `node install`
+Install the necessary packages with `npm install`
 
 and then run `./pdfpal` and choose the number of your desired tool and continue based on instructions.
 
